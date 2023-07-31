@@ -67,7 +67,7 @@ export class AuthPage implements OnInit {
       const matchToControl = control.parent?.get(matchTo);
 
       if (matchToControl && matchToControl.value !== control.value) {
-        return { 'notSame': true };
+        return {'notSame': true};
       }
 
       return null;
