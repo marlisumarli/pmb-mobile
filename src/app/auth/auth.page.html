@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-img src="assets/images/ubp.png"></ion-img>
+  <form [formGroup]="formGroup">
+    <ion-card mode="ios">
+      <ion-card-content>
+        <ion-input *ngIf="!isLogin" type="text" label="Nama" labelPlacement="floating"
+                   formControlName="name" errorText="Nama harus diisi"></ion-input>
+
+        <ion-input type="email" label="Email" labelPlacement="floating" formControlName="email"
+                   errorText="{{isLogin ? 'Required email*' : 'Email tidak valid'}}"></ion-input>
+
+        <ion-input type="password" class="{{isLogin ? 'ion-margin-bottom' : ''}}" label="Password"
+                   labelPlacement="floating" formControlName="password"
+                   errorText="{{isLogin ? 'Required password*' : 'Password Minimal 8 karakter'}}"></ion-input>
+
+        <ion-input *ngIf="!isLogin" type="password" class="ion-margin-bottom" label="Konfirmasi password"
+                   labelPlacement="floating" formControlName="confirmPassword"
+                   errorText="Password harus sama"></ion-input>
+
+        <ion-buttons>
+          <ion-button color="tertiary" fill="clear" mode="ios" type="button"
+                      (click)="onSwitchMode()">{{isLogin ? 'Halaman daftar' : 'Sudah daftar'}}
+          </ion-button>
+          <ion-button type="submit" color="{{isLogin ? 'tertiary' : 'success'}}" fill="solid" mode="ios"
+                      [disabled]="!formGroup.valid"
+                      (click)="isLogin ? onLogin() : onRegister()">{{isLogin ? 'Masuk' : 'Daftar'}}</ion-button>
+        </ion-buttons>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>
