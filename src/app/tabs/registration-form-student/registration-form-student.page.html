@@ -1,0 +1,63 @@
+<ion-content [fullscreen]="true">
+    <ion-img src="assets/images/ubp.png"></ion-img>
+    <h5 class="ion-text-center">Form Pendaftaran Mahasiswa Baru</h5>
+    <ion-card mode="ios" *ngIf="isRegister">
+        <form [formGroup]="formGroup">
+            <ion-card-header>
+                <ion-card-title>🪪 Data Diri</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-list>
+                    <ion-item>
+                        <ion-input label="Nama Lengkap" labelPlacement="stacked" placeholder="Masukan Nama"
+                                   formControlName="name" errorText="Nama Wajib Diisi"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-select label="Status Bekerja" label-placement="stacked" placeholder="Pilih Status"
+                                    formControlName="workStatus">
+                            <ion-select-option value="true">Bekerja</ion-select-option>
+                            <ion-select-option value="false">Tidak Bekerja</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Tanggal Lahir</ion-label>
+                        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+                        <ion-modal [keepContentsMounted]="true">
+                            <ng-template>
+                                <ion-datetime id="datetime" presentation="date" [showDefaultTitle]="true"
+                                              formControlName="bornDate"></ion-datetime>
+                            </ng-template>
+                        </ion-modal>
+                    </ion-item>
+                    <ion-item>
+                        <ion-select label="Gender" label-placement="stacked" placeholder="Pilih Gender"
+                                    formControlName="genderOption">
+                            <ion-select-option value="male">Laki-laki</ion-select-option>
+                            <ion-select-option value="female">Perempuan</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-select label="Agama" label-placement="stacked" placeholder="Pilih Agama"
+                                    formControlName="religionOption">
+                            <ion-select-option value="muslim">Islam</ion-select-option>
+                            <ion-select-option value="christian">Kristen</ion-select-option>
+                            <ion-select-option value="buddhist">Budha</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input label="Nomor Whatsapp" label-placement="stacked" type="tel"
+                                   placeholder="08xxx" formControlName="whatsappNumber"
+                                   errorText="Nomor Wajib Diisi"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-textarea label="Alamat Rumah" labelPlacement="stacked"
+                                      placeholder="Masukan Alamat Rumah" formControlName="homeAddress"
+                                      errorText="Alamat Rumah Wajib Diisi"></ion-textarea>
+                    </ion-item>
+                </ion-list>
+                <ion-button type="submit" color="tertiary" mode="ios" expand="full">Daftar</ion-button>
+            </ion-card-content>
+        </form>
+    </ion-card>
+</ion-content>
