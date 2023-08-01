@@ -100,30 +100,30 @@ export class AuthPage implements OnInit {
 
                 const student = this.studentsService.getStudentByEmail(email);
 
-               if (student){
-                   if (student.email === email && student.password === password){
-                       localStorage.setItem('userActive', JSON.stringify(student));
-                       this.router.navigateByUrl('/home');
-                   } else {
-                       this.toastCtrl.create({
-                           message: 'Email atau Password Salah.',
-                           duration: 2000,
-                           color: 'danger',
-                           position: 'top'
-                       }).then(toastEl => {
-                           toastEl.present();
-                       })
-                   }
-               } else {
-                   this.toastCtrl.create({
-                       message: 'Akun Tidak Ditemukan.',
-                       duration: 2000,
-                       color: 'danger',
-                       position: 'top'
-                   }).then(toastEl => {
-                       toastEl.present();
-                   })
-               }
+                if (student) {
+                    if (student.email === email && student.password === password) {
+                        localStorage.setItem('userActive', JSON.stringify(student));
+                        this.router.navigateByUrl('/tabs/home');
+                    } else {
+                        this.toastCtrl.create({
+                            message: 'Email atau Password Salah.',
+                            duration: 2000,
+                            color: 'danger',
+                            position: 'top'
+                        }).then(toastEl => {
+                            toastEl.present();
+                        })
+                    }
+                } else {
+                    this.toastCtrl.create({
+                        message: 'Akun Tidak Ditemukan.',
+                        duration: 2000,
+                        color: 'danger',
+                        position: 'top'
+                    }).then(toastEl => {
+                        toastEl.present();
+                    })
+                }
                 loadingEl.dismiss();
             }, 1500);
         })
@@ -164,7 +164,7 @@ export class AuthPage implements OnInit {
                     students.push(register);
                     localStorage.setItem('students', JSON.stringify(students));
                     localStorage.setItem('userActive', JSON.stringify(register));
-                    this.router.navigateByUrl('/home');
+                    this.router.navigateByUrl('/tabs/home');
                 }
 
                 this.formGroup.reset();
