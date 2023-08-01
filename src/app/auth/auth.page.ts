@@ -20,7 +20,10 @@ export class AuthPage implements OnInit {
         private toastCtrl: ToastController,
         private router: Router
     ) {
-
+        // setInterval(() => {
+        //     // console.log(studentsService.getStudentByEmail('if21.sumarli@mhs.ubpkarawang.ac.id'))
+        //     console.log(studentsService.getStudents())
+        // }, 1000)
     }
 
     ngOnInit() {
@@ -151,7 +154,7 @@ export class AuthPage implements OnInit {
                 const students = this.studentsService.getStudents();
                 const student = this.studentsService.getStudentByEmail(register.email);
 
-                if (student) {
+                if (student && student.email === register.email) {
                     this.toastCtrl.create({
                         message: 'Email sudah terdaftar!',
                         duration: 2000,

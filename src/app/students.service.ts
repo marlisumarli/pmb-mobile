@@ -12,8 +12,8 @@ export class StudentsService {
     return localStorages ? JSON.parse(localStorages) : [];
   }
 
-  getStudentByEmail(email: string) {
-      const students = this.getStudents();
-      return students.find((student: any) => student.email === email);
-  }
+    getStudentByEmail(email: string): any {
+        let students = JSON.parse(localStorage.getItem('students') || '[]');
+        return students.find((student: any) => student.email === email);
+    }
 }
