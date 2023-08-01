@@ -4,15 +4,17 @@
       <h2><b>Mahasiswa Yang Telah Mendaftar</b></h2>
     </ion-card-header>
     <ion-card-content>
-      <div *ngFor="let student of students">
-        <ion-chip *ngIf="student.isRegister">
-          <ion-avatar>
-            <ion-img
-              src="{{student.avatar ? student.avatar : 'https://ionicframework.com/docs/img/demos/avatar.svg'}}"></ion-img>
-          </ion-avatar>
-          <ion-label>{{student.name}}</ion-label>
-        </ion-chip>
-      </div>
+      <ion-row>
+        <ion-col *ngFor="let student of students">
+          <ion-chip *ngIf="student.isRegister">
+            <ion-avatar>
+              <ion-img
+                src="{{student.avatar ? student.avatar : 'https://ionicframework.com/docs/img/demos/avatar.svg'}}"></ion-img>
+            </ion-avatar>
+            <ion-label>{{student.name}}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
     </ion-card-content>
   </ion-card>
 </ion-content>

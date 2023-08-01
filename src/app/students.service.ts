@@ -23,4 +23,11 @@ export class StudentsService {
     students.push(data);
     localStorage.setItem('students', JSON.stringify(students));
   }
+
+  studentUpdate(data: any) {
+    let students = JSON.parse(localStorage.getItem('students') || '[]');
+    let studentIndex = students.findIndex((student: any) => student.email === data.email);
+    students[studentIndex] = data;
+    localStorage.setItem('students', JSON.stringify(students));
+  }
 }
