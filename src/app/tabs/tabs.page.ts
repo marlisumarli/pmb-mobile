@@ -10,7 +10,8 @@ export class TabsPage implements OnInit {
   @ViewChild(IonTabs) tabs: IonTabs;
   selectedTab: any;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

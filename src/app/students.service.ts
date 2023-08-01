@@ -5,15 +5,16 @@ import {Injectable} from '@angular/core';
 })
 export class StudentsService {
 
-  constructor() { }
+  constructor() {
+  }
 
   getStudents() {
     const localStorages = localStorage.getItem('students');
     return localStorages ? JSON.parse(localStorages) : [];
   }
 
-    getStudentByEmail(email: string): any {
-        let students = JSON.parse(localStorage.getItem('students') || '[]');
-        return students.find((student: any) => student.email === email);
-    }
+  getStudentByEmail(email: string): any {
+    let students = JSON.parse(localStorage.getItem('students') || '[]');
+    return students.find((student: any) => student.email === email);
+  }
 }
