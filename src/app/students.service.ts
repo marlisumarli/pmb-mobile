@@ -17,4 +17,10 @@ export class StudentsService {
     let students = JSON.parse(localStorage.getItem('students') || '[]');
     return students.find((student: any) => student.email === email);
   }
+
+  studentRegister(data: any) {
+    let students = JSON.parse(localStorage.getItem('students') || '[]');
+    students.push(data);
+    localStorage.setItem('students', JSON.stringify(students));
+  }
 }

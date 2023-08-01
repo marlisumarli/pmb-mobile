@@ -107,7 +107,7 @@ export class RegistrationFormStudentPage implements OnInit {
           isRegister: this.isRegister
         };
         localStorage.setItem('userActive', JSON.stringify(registerData));
-        localStorage.setItem('usersRegisterData', JSON.stringify(registerData));
+        this.studentService.studentRegister(registerData);
 
         this.toastCtrl.create({
           keyboardClose: true,

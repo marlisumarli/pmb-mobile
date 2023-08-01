@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {StudentsService} from "../../students.service";
 
 @Component({
   selector: 'app-home',
@@ -6,8 +7,14 @@ import {Component} from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  students = this.studentsService.getStudents();
 
-  constructor() {
+  constructor(
+    private studentsService: StudentsService
+  ) {
   }
 
+  ngOnInit() {
+
+  }
 }
