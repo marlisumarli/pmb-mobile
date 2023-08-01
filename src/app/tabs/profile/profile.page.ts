@@ -28,4 +28,12 @@ export class ProfilePage implements OnInit {
     })
   }
 
+  handleRefresh(event: any) {
+    setTimeout(() => {
+      const localStorages = localStorage.getItem('userActive');
+      this.activeUser = localStorages ? JSON.parse(localStorages) : {};
+      event.target.complete();
+    }, 2000);
+  }
+
 }

@@ -7,14 +7,14 @@ import {StudentsService} from "../../students.service";
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  students = this.studentsService.getStudents();
+  students: any;
 
   constructor(
     private studentsService: StudentsService
   ) {
   }
 
-  ngOnInit() {
-
+  ionViewWillEnter() {
+    this.students = this.studentsService.getStudents();
   }
 }

@@ -14,7 +14,6 @@ export class RegistrationFormStudentPage implements OnInit {
   formGroup: FormGroup;
   activeUser: any;
   isModalOpen = false;
-  userRegisterData: any;
 
   constructor(
     private loadingCtrl: LoadingController,
@@ -24,9 +23,6 @@ export class RegistrationFormStudentPage implements OnInit {
     const localStorages = localStorage.getItem('userActive');
     this.activeUser = localStorages ? JSON.parse(localStorages) : {};
     this.isRegister = this.activeUser.isRegister;
-
-    const userRegisterData = localStorage.getItem('usersRegisterData');
-    this.userRegisterData = userRegisterData ? JSON.parse(userRegisterData) : [];
   }
 
   ngOnInit() {
@@ -107,7 +103,12 @@ export class RegistrationFormStudentPage implements OnInit {
           isRegister: this.isRegister
         };
         localStorage.setItem('userActive', JSON.stringify(registerData));
-        this.studentService.studentRegister(registerData);
+        this.studentService.studentUpdate(registerData);
+
+        const localStorages = localStorage.getItem('userActive');
+        this.activeUser = localStorages ? JSON.parse(localStorages) : {};
+
+        window.open('mailto:' + this.activeUser.email + '?subject=Registration Success&body=Hi ' + this.activeUser.name + ',%0D%0A%0D%0A' + 'Thank you for registering to our school. We will contact you soon.%0D%0A%0D%0A' + 'Regards,%0D%0A' + 'School Admin', '_system');
 
         this.toastCtrl.create({
           keyboardClose: true,
@@ -124,5 +125,11 @@ export class RegistrationFormStudentPage implements OnInit {
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
+  }
+
+  handleRefresh(event: any) {
+    const localStorages = localStorage.getItem('userActive');
+    this.activeUser = localStorages ? JSON.parse(localStorages) : {};
+    event.target.complete();
   }
 }
