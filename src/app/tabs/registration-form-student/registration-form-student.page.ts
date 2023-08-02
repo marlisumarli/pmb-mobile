@@ -100,7 +100,8 @@ export class RegistrationFormStudentPage implements OnInit {
           religionOption: this.formGroup.value.religionOption,
           whatsappNumber: this.formGroup.value.whatsappNumber,
           homeAddress: this.formGroup.value.homeAddress,
-          isRegister: this.isRegister
+          isRegister: this.isRegister,
+          password: this.activeUser.password
         };
         localStorage.setItem('userActive', JSON.stringify(registerData));
         this.studentService.studentUpdate(registerData);
