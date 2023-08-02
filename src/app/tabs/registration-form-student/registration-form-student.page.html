@@ -13,12 +13,16 @@
           <ion-buttons slot="end">
             <ion-button (click)="setOpen(false)">Close</ion-button>
           </ion-buttons>
-          <ion-buttons>
-            <ion-button (click)="handleRefresh($event)">Refresh</ion-button>
-          </ion-buttons>
+          <!--          <ion-buttons>-->
+          <!--            <ion-button (click)="handleRefresh($event)">Refresh</ion-button>-->
+          <!--          </ion-buttons>-->
+
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
+        <ion-refresher (ionRefresh)="handleRefresh($event)" slot="fixed">
+          <ion-refresher-content></ion-refresher-content>
+        </ion-refresher>
         <ion-list>
           <ion-item>Nama : {{activeUser.name}}</ion-item>
           <ion-item>Tanggal Lahir : {{activeUser.bornDate}}</ion-item>

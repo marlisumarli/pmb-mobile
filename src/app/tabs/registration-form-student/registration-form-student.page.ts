@@ -129,8 +129,10 @@ export class RegistrationFormStudentPage implements OnInit {
   }
 
   handleRefresh(event: any) {
-    const localStorages = localStorage.getItem('userActive');
-    this.activeUser = localStorages ? JSON.parse(localStorages) : {};
-    event.target.complete();
+    setTimeout(() => {
+      const localStorages = localStorage.getItem('userActive');
+      this.activeUser = localStorages ? JSON.parse(localStorages) : {};
+      event.target.complete();
+    }, 500);
   }
 }
