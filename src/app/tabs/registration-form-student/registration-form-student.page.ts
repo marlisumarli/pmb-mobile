@@ -92,7 +92,7 @@ export class RegistrationFormStudentPage implements OnInit {
         this.isRegister = true;
 
         const registerData = {
-          email: this.activeUser.email,
+          ...this.activeUser,
           name: this.formGroup.value.name,
           workStatus: this.formGroup.value.workStatus,
           bornDate: formattedBornDate,
@@ -100,8 +100,7 @@ export class RegistrationFormStudentPage implements OnInit {
           religionOption: this.formGroup.value.religionOption,
           whatsappNumber: this.formGroup.value.whatsappNumber,
           homeAddress: this.formGroup.value.homeAddress,
-          isRegister: this.isRegister,
-          password: this.activeUser.password
+          isRegister: this.isRegister
         };
         localStorage.setItem('userActive', JSON.stringify(registerData));
         this.studentService.studentUpdate(registerData);
@@ -109,7 +108,7 @@ export class RegistrationFormStudentPage implements OnInit {
         const localStorages = localStorage.getItem('userActive');
         this.activeUser = localStorages ? JSON.parse(localStorages) : {};
 
-        window.open('mailto:' + this.activeUser.email + '?subject=Registration Success&body=Hi ' + this.activeUser.name + ',%0D%0A%0D%0A' + 'Thank you for registering to our school. We will contact you soon.%0D%0A%0D%0A' + 'Regards,%0D%0A' + 'School Admin', '_system');
+        window.open(`mailto:${this.activeUser.email}?subject=Registration Success&body=Hi ${this.activeUser.name},%0D%0A%0D%0AThank you for registering to our school. We will contact you soon.%0D%0A%0D%0ARegards,%0D%0ASchool Admin`, '_system');
 
         this.toastCtrl.create({
           keyboardClose: true,
