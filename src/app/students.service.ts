@@ -7,7 +7,7 @@ export class StudentsService {
 
   getStudents() {
     const localStorages = localStorage.getItem('students');
-    console.log(2)
+    console.log(3)
     return localStorages ? JSON.parse(localStorages) : [];
   }
 
