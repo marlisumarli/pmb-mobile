@@ -1,11 +1,17 @@
+name: Commit to Notion CI
+
+on:
+  push:
+    branches: [ "main" ]
+
 jobs:
-  Notion_Hook_job:
+  build:
     runs-on: ubuntu-latest
-    name: A job to connect to Notion
     steps:
-      - name: Connect to Notion step
-        id: notion
-        uses: alessandrobelli/NotionHook@1.0
+      - uses: bb7hn/notion_committer@main
         with:
-          notion_secret: ${{ secrets.secret_iL18gcdKCjDyTgGIOpnvJZR7ArCvyWuvy8qdT5ml6ht }}
-          notion_database: ${{ secrets.b2292ced4d0d483a8870781d828f8bc2?v=0a46fe30f8b8422a8ffaa2a5532e4310 }}
+          SECRET_GITHUB: ${{ secrets.SECRET_GITHUB }}
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DATABASE: ${{ secrets.NOTION_DATABASE }}
+          OWNER: bb7hn
+          REPO: notion_committer
